@@ -61,6 +61,8 @@
 
 @synthesize showStarted;
 
+@synthesize grayFill;
+
 - (void)setMode:(MBProgressHUDMode)newMode {
     // Dont change mode if it wasn't actually changed to prevent flickering
     if (mode && (mode == newMode)) {
@@ -265,6 +267,9 @@
 		
         // Make invisible for now
         self.alpha = 0.0;
+		
+		// Fill color
+		self.grayFill = 0.0;
 		
         // Add label
         label = [[UILabel alloc] initWithFrame:self.bounds];
@@ -573,7 +578,7 @@
     float radius = 10.0f;
 	
     CGContextBeginPath(context);
-    CGContextSetGrayFillColor(context, 0.0, self.opacity);
+    CGContextSetGrayFillColor(context, self.grayFill, self.opacity);
     CGContextMoveToPoint(context, CGRectGetMinX(rect) + radius, CGRectGetMinY(rect));
     CGContextAddArc(context, CGRectGetMaxX(rect) - radius, CGRectGetMinY(rect) + radius, radius, 3 * M_PI / 2, 0, 0);
     CGContextAddArc(context, CGRectGetMaxX(rect) - radius, CGRectGetMaxY(rect) - radius, radius, 0, M_PI / 2, 0);

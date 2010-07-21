@@ -330,4 +330,9 @@ typedef enum {
  */
 - (void)showWhileExecuting:(SEL)method onTarget:(id)target withObject:(id)object animated:(BOOL)animated;
 
+
+@property (assign) float grayFill;
+
+
+
 @end
